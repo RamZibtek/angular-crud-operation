@@ -1,0 +1,48 @@
+<div class="main">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Student Edit
+                    <a routerLink="/students/create" class="btn btn-danger float-end">Back</a>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div *ngIf="isLoading; else  elseForm">
+                    <app-loader />
+                </div>
+                <ng-template #elseForm>
+                    <form (ngSubmit)="UpdateStudent()">
+                        <div *ngIf="student">
+                            <div class="mb-3">
+                                <label for="name">Name</label>
+                                <input type="text" [(ngModel)]="student.name" name="name" class="form-control required">
+                                <div *ngIf="errors.name" class="text-danger">{{errors.name}}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="course"> Course</label>
+                                <input type="text" [(ngModel)]="student.course" name="course"
+                                    class="form-control required">
+                                <div *ngIf="errors.course" class="text-danger">{{errors.course}}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">Email</label>
+                                <input type="text" [(ngModel)]=" student.email" name="email"
+                                    class="form-control required">
+                                <div *ngIf="errors.email" class="text-danger">{{errors.email}}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone">Phone</label>
+                                <input type="text" [(ngModel)]="student.phone" name="phone"
+                                    class="form-control  required">
+                                <div *ngIf="errors.phone" class="text-danger">{{errors.phone}}</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
